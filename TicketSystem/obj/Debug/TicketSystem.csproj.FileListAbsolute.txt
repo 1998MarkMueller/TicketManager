@@ -1,0 +1,13 @@
+c:\users\muellm2\documents\visual studio 2015\Projects\TicketSystem\TicketSystem\bin\Debug\TicketSystem.exe.config
+c:\users\muellm2\documents\visual studio 2015\Projects\TicketSystem\TicketSystem\bin\Debug\TicketSystem.exe
+c:\users\muellm2\documents\visual studio 2015\Projects\TicketSystem\TicketSystem\bin\Debug\TicketSystem.pdb
+c:\users\muellm2\documents\visual studio 2015\Projects\TicketSystem\TicketSystem\obj\Debug\TicketSystem.csprojResolveAssemblyReference.cache
+c:\users\muellm2\documents\visual studio 2015\Projects\TicketSystem\TicketSystem\obj\Debug\TicketSystem.Form1.resources
+c:\users\muellm2\documents\visual studio 2015\Projects\TicketSystem\TicketSystem\obj\Debug\TicketSystem.Properties.Resources.resources
+c:\users\muellm2\documents\visual studio 2015\Projects\TicketSystem\TicketSystem\obj\Debug\TicketSystem.csproj.GenerateResource.Cache
+c:\users\muellm2\documents\visual studio 2015\Projects\TicketSystem\TicketSystem\obj\Debug\TicketSystem.exe
+c:\users\muellm2\documents\visual studio 2015\Projects\TicketSystem\TicketSystem\obj\Debug\TicketSystem.pdb
+c:\users\muellm2\documents\visual studio 2015\Projects\TicketSystem\TicketSystem\bin\Debug\FSharp.Core.dll
+c:\users\muellm2\documents\visual studio 2015\Projects\TicketSystem\TicketSystem\bin\Debug\FSharp.Core.xml
+c:\users\muellm2\documents\visual studio 2015\Projects\TicketSystem\TicketSystem\obj\Debug\TicketSystem.AddTicket.resources
+c:\users\muellm2\documents\visual studio 2015\Projects\TicketSystem\TicketSystem\obj\Debug\TicketSystem.FullScreen.resources
