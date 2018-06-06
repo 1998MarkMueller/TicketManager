@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,6 +20,7 @@ namespace TicketSystem
         public Form1()
         {
             InitializeComponent();
+            Console.WriteLine(Environment.UserName);
             JsonController.ReadJson();
             fillTicketTable();
         }
@@ -27,16 +29,8 @@ namespace TicketSystem
         {
             lstBoxTickets.Items.Clear();
             foreach (Ticket t in Ticket.ticketArray) {
-                lstBoxTickets.Items.Add("#"+t.ID+" ["+t.Status+"] "+t.Subject);
+                var test = lstBoxTickets.Items.Add("#" + t.ID + " [" + t.Status + "] " + t.Subject);
             }
-        }
-
-        private void lstBoxTickets_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lastLstIndex != -1) try { Ticket.saveTicket(Ticket.ticketArray[lastLstIndex], lblID.Text, lblSubject.Text, txtNotes.Text, txtSolution.Text, txtStatus.Text); } catch { }
-            if(lstBoxTickets.SelectedIndex != -1)populateTicketInformation(Ticket.ticketArray[lstBoxTickets.SelectedIndex]);
-            lastLstIndex = lstBoxTickets.SelectedIndex;
-            fillTicketTable();
         }
 
         private void populateTicketInformation(Ticket t)
@@ -45,17 +39,44 @@ namespace TicketSystem
             lblID.Text = "#" + t.ID;
             lblSubject.Text = t.Subject;
             txtNotes.Text = t.Notes;
-            txtSolution.Text = t.Solution;
-            txtStatus.SelectedText = t.Status;
+            try { txtSolution.Rtf = t.Solution; } catch { txtSolution.Text = t.Solution; }
+            txtStatus.Text = t.Status;
         }
-
+        
+        #region Other Methods
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(lastLstIndex < Ticket.ticketArray.Count)
-            if (lastLstIndex != -1) Ticket.saveTicket(Ticket.ticketArray[lastLstIndex], lblID.Text, lblSubject.Text, txtNotes.Text, txtSolution.Text, txtStatus.Text);
+            if (lastLstIndex < Ticket.ticketArray.Count)
+                if (lastLstIndex != -1) Ticket.saveTicket(Ticket.ticketArray[lastLstIndex], lblID.Text, lblSubject.Text, txtNotes.Text, txtSolution.Text, txtStatus.Text);
             JsonController.SaveJson();
         }
 
+        bool fullOpen = false;
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+            if (lastLstIndex != -1 && !fullOpen) Ticket.saveTicket(Ticket.ticketArray[lastLstIndex], lblID.Text, lblSubject.Text, txtNotes.Text, txtSolution.Text, txtStatus.Text);
+            if (fullOpen) fullOpen = false;
+            fillTicketTable();
+            if (lastLstIndex != -1) try { populateTicketInformation(Ticket.ticketArray[lastLstIndex]); } catch { }
+        }
+
+        private void lstBoxTickets_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lastLstIndex != -1) try { Ticket.saveTicket(Ticket.ticketArray[lastLstIndex], lblID.Text, lblSubject.Text, txtNotes.Text, txtSolution.Text, txtStatus.Text); } catch { }
+            if (lstBoxTickets.SelectedIndex != -1) populateTicketInformation(Ticket.ticketArray[lstBoxTickets.SelectedIndex]);
+            lastLstIndex = lstBoxTickets.SelectedIndex;
+            fillTicketTable();
+        }
+        private void txtSolution_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (lblID.Text == "") return;
+            FullScreen f = new FullScreen(txtSolution.Text, lastLstIndex);
+            f.Show();
+            fullOpen = true;
+        }
+        #endregion
+
+        #region Click Events
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddTicket d = new AddTicket();
@@ -64,23 +85,9 @@ namespace TicketSystem
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            if(lastLstIndex != -1)Ticket.ticketArray.Remove(Ticket.ticketArray[lastLstIndex]);
+            if (lastLstIndex != -1) Ticket.ticketArray.Remove(Ticket.ticketArray[lastLstIndex]);
             fillTicketTable();
         }
-
-        private void Form1_Activated(object sender, EventArgs e)
-        {
-            fillTicketTable();
-            if (lastLstIndex != -1) try { populateTicketInformation(Ticket.ticketArray[lastLstIndex]); } catch { }
-        }
-
-        private void txtSolution_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (lblID.Text == "") return;
-            FullScreen f = new FullScreen(txtSolution.Text, lastLstIndex);
-            f.Show();
-        }
-
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             JsonController.SaveJson();
@@ -95,6 +102,29 @@ namespace TicketSystem
         {
             JsonController.ImportJson();
         }
+
+        private void deleteAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var test = MessageBox.Show("Are you sure you want all of your tickets deleted?", "Warning!", MessageBoxButtons.YesNo);
+            if (test == DialogResult.Yes)
+            {
+                Ticket.ticketArray.Clear();
+                JsonController.SaveJson();
+                fillTicketTable();
+            }
+        }
+
+        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        {
+            fillTicketTable();
+        }
+
+        private void Form1_Click(object sender, EventArgs e)
+        {
+            fillTicketTable();
+        }
+        #endregion
+
     }
 
     public class Ticket
@@ -133,7 +163,6 @@ namespace TicketSystem
             try
             {
                 var ticketLines = Properties.Settings.Default.Json.Split('µ');
-                //Console.WriteLine("Line: " + ticketLines[0]);
                 string[][] individualLine = new string[ticketLines.Length][];
                 for (int i = 0; i < ticketLines.Length - 1; i++)
                 {
@@ -182,7 +211,7 @@ namespace TicketSystem
 
                 foreach (Ticket t in Ticket.ticketArray)
                 {
-                    writer.WriteLine(t.ID + "¼" + t.Subject + "¼" + t.Notes + "¼" + t.Solution + "¼" + t.Status + "µ");
+                    writer.WriteLine(Encrypt.EncryptString(t.ID + "¼" + t.Subject + "¼" + t.Notes + "¼" + t.Solution + "¼" + t.Status + "µ", "Password"));
                 }
 
                 writer.Dispose();
@@ -198,22 +227,77 @@ namespace TicketSystem
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 string path = ofd.FileName;
-                var test = MessageBox.Show("Would you like to add on to your tickets? If not I would delete all existing tickets.", "Warning!", MessageBoxButtons.YesNo);
-                if (test == DialogResult.No)
+                if (Ticket.ticketArray.Count >= 1)
                 {
-                    Properties.Settings.Default.Json = "";
-                    Ticket.ticketArray.Clear();
+                    var test = MessageBox.Show("Would you like to add on to your tickets? If not I would delete all existing tickets.", "Warning!", MessageBoxButtons.YesNo);
+                    if (test == DialogResult.No)
+                    {
+                        Properties.Settings.Default.Json = "";
+                        Ticket.ticketArray.Clear();
+                    }
                 }
                 using (StreamReader sr = new StreamReader(path))
                 {
                     string line;
                     while ((line = sr.ReadLine()) != null)
                     {
-                        Properties.Settings.Default.Json += line;
+                        Properties.Settings.Default.Json += Encrypt.DecryptString(line, "Password");
+                    }
+                    if(Properties.Settings.Default.Json.Contains("¼") && Properties.Settings.Default.Json.Contains("µ"))
+                        JsonController.ReadJson();
+                    else{
+                        MessageBox.Show("File is corrupted!", "Error: Corruption", MessageBoxButtons.OK);
+                        Properties.Settings.Default.Json = "";
                         JsonController.ReadJson();
                     }
                 }
             }
+        }
+    }
+
+    public static class Encrypt
+    {
+        // This size of the IV (in bytes) must = (keysize / 8).  Default keysize is 256, so the IV must be
+        // 32 bytes long.  Using a 16 character string here gives us 32 bytes when converted to a byte array.
+        private const string initVector = "pemgail9uzpgzl88";
+        // This constant is used to determine the keysize of the encryption algorithm
+        private const int keysize = 256;
+        //Encrypt
+        public static string EncryptString(string plainText, string passPhrase)
+        {
+            byte[] initVectorBytes = Encoding.UTF8.GetBytes(initVector);
+            byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
+            PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null);
+            byte[] keyBytes = password.GetBytes(keysize / 8);
+            RijndaelManaged symmetricKey = new RijndaelManaged();
+            symmetricKey.Mode = CipherMode.CBC;
+            ICryptoTransform encryptor = symmetricKey.CreateEncryptor(keyBytes, initVectorBytes);
+            MemoryStream memoryStream = new MemoryStream();
+            CryptoStream cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write);
+            cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
+            cryptoStream.FlushFinalBlock();
+            byte[] cipherTextBytes = memoryStream.ToArray();
+            memoryStream.Close();
+            cryptoStream.Close();
+            return Convert.ToBase64String(cipherTextBytes);
+        }
+        //Decrypt
+        public static string DecryptString(string cipherText, string passPhrase)
+        {
+            byte[] initVectorBytes = Encoding.UTF8.GetBytes(initVector);
+            byte[] cipherTextBytes = Convert.FromBase64String(cipherText);
+            PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null);
+            byte[] keyBytes = password.GetBytes(keysize / 8);
+            RijndaelManaged symmetricKey = new RijndaelManaged();
+            symmetricKey.Mode = CipherMode.CBC;
+            ICryptoTransform decryptor = symmetricKey.CreateDecryptor(keyBytes, initVectorBytes);
+            MemoryStream memoryStream = new MemoryStream(cipherTextBytes);
+            CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read);
+            byte[] plainTextBytes = new byte[cipherTextBytes.Length];
+            int decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
+            memoryStream.Close();
+            cryptoStream.Close();
+            return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount);
         }
     }
 }

@@ -59,5 +59,15 @@ namespace TicketSystem.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ticket_304657_960_720 {
+            get {
+                object obj = ResourceManager.GetObject("ticket_304657_960_720", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

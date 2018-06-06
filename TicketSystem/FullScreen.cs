@@ -17,7 +17,7 @@ namespace TicketSystem
         {
             InitializeComponent();
             richTextBox1.Size = this.Size;
-            richTextBox1.Text = _Solution;
+            try { richTextBox1.Rtf = _Solution; } catch { richTextBox1.Text = _Solution; }
             pos = i;
             this.Text = "Ticket #" + Ticket.ticketArray[i].ID + " - " + Ticket.ticketArray[i].Subject;
         }
@@ -29,7 +29,8 @@ namespace TicketSystem
 
         private void FullScreen_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Ticket.ticketArray[pos].Solution = richTextBox1.Text;
+            Ticket.ticketArray[pos].Solution = richTextBox1.Rtf;
+            Console.WriteLine(richTextBox1.Rtf);
         }
     }
 }
