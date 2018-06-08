@@ -11,3 +11,4 @@ c:\users\muellm2\documents\visual studio 2015\Projects\TicketSystem\TicketSystem
 c:\users\muellm2\documents\visual studio 2015\Projects\TicketSystem\TicketSystem\bin\Debug\FSharp.Core.xml
 c:\users\muellm2\documents\visual studio 2015\Projects\TicketSystem\TicketSystem\obj\Debug\TicketSystem.AddTicket.resources
 c:\users\muellm2\documents\visual studio 2015\Projects\TicketSystem\TicketSystem\obj\Debug\TicketSystem.FullScreen.resources
+C:\Users\muellm2\Documents\Visual Studio 2015\Projects\TicketSystem\TicketSystem\obj\Debug\TicketSystem.ColorChange.resources

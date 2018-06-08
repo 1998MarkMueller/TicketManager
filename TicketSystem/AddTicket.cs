@@ -22,7 +22,7 @@ namespace TicketSystem
             int i = 0;
             if (int.TryParse(textBox1.Text, out i))
             {
-                Ticket.ticketArray.Add(new Ticket(Convert.ToInt32(textBox1.Text), textBox2.Text, "", "", "Not Completed"));
+                Ticket.ticketArray.Add(new Ticket(Convert.ToInt32(textBox1.Text), textBox2.Text, "", "", "Not Completed", new DateTime(1753, 1, 1)));
                 this.Close();
             }else
             {

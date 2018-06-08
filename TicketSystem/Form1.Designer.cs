@@ -43,6 +43,9 @@
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.setColorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +53,7 @@
             // 
             this.lstBoxTickets.BackColor = System.Drawing.Color.LightCyan;
             this.lstBoxTickets.FormattingEnabled = true;
-            this.lstBoxTickets.Location = new System.Drawing.Point(12, 28);
+            this.lstBoxTickets.Location = new System.Drawing.Point(12, 54);
             this.lstBoxTickets.Name = "lstBoxTickets";
             this.lstBoxTickets.Size = new System.Drawing.Size(367, 95);
             this.lstBoxTickets.TabIndex = 0;
@@ -60,7 +63,7 @@
             // 
             this.lblID.AutoSize = true;
             this.lblID.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblID.Location = new System.Drawing.Point(12, 160);
+            this.lblID.Location = new System.Drawing.Point(13, 182);
             this.lblID.Name = "lblID";
             this.lblID.Size = new System.Drawing.Size(0, 20);
             this.lblID.TabIndex = 3;
@@ -69,7 +72,7 @@
             // 
             this.lblSubject.AutoSize = true;
             this.lblSubject.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubject.Location = new System.Drawing.Point(13, 180);
+            this.lblSubject.Location = new System.Drawing.Point(13, 206);
             this.lblSubject.Name = "lblSubject";
             this.lblSubject.Size = new System.Drawing.Size(0, 13);
             this.lblSubject.TabIndex = 5;
@@ -78,7 +81,7 @@
             // 
             this.txtSolution.AcceptsTab = true;
             this.txtSolution.BackColor = System.Drawing.Color.LightCyan;
-            this.txtSolution.Location = new System.Drawing.Point(16, 222);
+            this.txtSolution.Location = new System.Drawing.Point(16, 248);
             this.txtSolution.Name = "txtSolution";
             this.txtSolution.Size = new System.Drawing.Size(363, 96);
             this.txtSolution.TabIndex = 7;
@@ -88,7 +91,7 @@
             // txtNotes
             // 
             this.txtNotes.BackColor = System.Drawing.Color.LightCyan;
-            this.txtNotes.Location = new System.Drawing.Point(16, 196);
+            this.txtNotes.Location = new System.Drawing.Point(16, 222);
             this.txtNotes.Name = "txtNotes";
             this.txtNotes.Size = new System.Drawing.Size(363, 20);
             this.txtNotes.TabIndex = 6;
@@ -96,7 +99,7 @@
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.Color.LightCyan;
-            this.btnAdd.Location = new System.Drawing.Point(12, 129);
+            this.btnAdd.Location = new System.Drawing.Point(12, 155);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(169, 23);
             this.btnAdd.TabIndex = 1;
@@ -107,7 +110,7 @@
             // btnRemove
             // 
             this.btnRemove.BackColor = System.Drawing.Color.LightCyan;
-            this.btnRemove.Location = new System.Drawing.Point(210, 129);
+            this.btnRemove.Location = new System.Drawing.Point(210, 155);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(169, 23);
             this.btnRemove.TabIndex = 2;
@@ -126,7 +129,7 @@
             "Tested",
             "UAT",
             "Completed"});
-            this.txtStatus.Location = new System.Drawing.Point(210, 158);
+            this.txtStatus.Location = new System.Drawing.Point(210, 184);
             this.txtStatus.Name = "txtStatus";
             this.txtStatus.Size = new System.Drawing.Size(169, 21);
             this.txtStatus.TabIndex = 4;
@@ -135,10 +138,11 @@
             // 
             this.toolStrip1.BackColor = System.Drawing.Color.AliceBlue;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton2});
+            this.toolStripButton2,
+            this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(391, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(390, 25);
             this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -184,12 +188,39 @@
             this.deleteAllToolStripMenuItem.Text = "Delete All";
             this.deleteAllToolStripMenuItem.Click += new System.EventHandler(this.deleteAllToolStripMenuItem_Click);
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.setColorsToolStripMenuItem});
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(62, 22);
+            this.toolStripButton1.Text = "Options";
+            // 
+            // setColorsToolStripMenuItem
+            // 
+            this.setColorsToolStripMenuItem.Name = "setColorsToolStripMenuItem";
+            this.setColorsToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.setColorsToolStripMenuItem.Text = "Set Colors";
+            this.setColorsToolStripMenuItem.Click += new System.EventHandler(this.setColorsToolStripMenuItem_Click);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+            this.dateTimePicker1.Location = new System.Drawing.Point(12, 28);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(367, 20);
+            this.dateTimePicker1.TabIndex = 9;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(391, 327);
+            this.ClientSize = new System.Drawing.Size(390, 356);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.txtStatus);
             this.Controls.Add(this.btnRemove);
@@ -229,6 +260,9 @@
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteAllToolStripMenuItem;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripButton1;
+        private System.Windows.Forms.ToolStripMenuItem setColorsToolStripMenuItem;
     }
 }
 

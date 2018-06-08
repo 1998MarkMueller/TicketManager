@@ -34,5 +34,185 @@ namespace TicketSystem.Properties {
                 this["Json"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string FormFore {
+            get {
+                return ((string)(this["FormFore"]));
+            }
+            set {
+                this["FormFore"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string FormBack {
+            get {
+                return ((string)(this["FormBack"]));
+            }
+            set {
+                this["FormBack"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TicketBoxFore {
+            get {
+                return ((string)(this["TicketBoxFore"]));
+            }
+            set {
+                this["TicketBoxFore"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TicketBoxBack {
+            get {
+                return ((string)(this["TicketBoxBack"]));
+            }
+            set {
+                this["TicketBoxBack"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AlarmFore {
+            get {
+                return ((string)(this["AlarmFore"]));
+            }
+            set {
+                this["AlarmFore"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AlarmBack {
+            get {
+                return ((string)(this["AlarmBack"]));
+            }
+            set {
+                this["AlarmBack"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string NotesFore {
+            get {
+                return ((string)(this["NotesFore"]));
+            }
+            set {
+                this["NotesFore"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string NotesBack {
+            get {
+                return ((string)(this["NotesBack"]));
+            }
+            set {
+                this["NotesBack"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SolutionFore {
+            get {
+                return ((string)(this["SolutionFore"]));
+            }
+            set {
+                this["SolutionFore"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SolutionBack {
+            get {
+                return ((string)(this["SolutionBack"]));
+            }
+            set {
+                this["SolutionBack"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ButtonFore {
+            get {
+                return ((string)(this["ButtonFore"]));
+            }
+            set {
+                this["ButtonFore"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ButtonBack {
+            get {
+                return ((string)(this["ButtonBack"]));
+            }
+            set {
+                this["ButtonBack"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LabelFore {
+            get {
+                return ((string)(this["LabelFore"]));
+            }
+            set {
+                this["LabelFore"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string StatusFore {
+            get {
+                return ((string)(this["StatusFore"]));
+            }
+            set {
+                this["StatusFore"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string StatusBack {
+            get {
+                return ((string)(this["StatusBack"]));
+            }
+            set {
+                this["StatusBack"] = value;
+            }
+        }
     }
 }

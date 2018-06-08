@@ -59,6 +59,12 @@
     <Compile Include="AddTicket.Designer.cs">
       <DependentUpon>AddTicket.cs</DependentUpon>
     </Compile>
+    <Compile Include="ColorChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ColorChange.Designer.cs">
+      <DependentUpon>ColorChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddTicket.resx">
       <DependentUpon>AddTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorChange.resx">
+      <DependentUpon>ColorChange.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
